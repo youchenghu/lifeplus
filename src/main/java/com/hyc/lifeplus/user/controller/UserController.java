@@ -1,16 +1,20 @@
 package com.hyc.lifeplus.user.controller;
 
+import com.hyc.lifeplus.account.enums.AccountingType;
 import com.hyc.lifeplus.object.entity.Book;
 import com.hyc.lifeplus.object.service.BookService;
 import com.hyc.lifeplus.user.entity.User;
+import com.hyc.lifeplus.user.entity.UserAccounting;
 import com.hyc.lifeplus.user.entity.UserBook;
 import com.hyc.lifeplus.user.entity.UserCar;
+import com.hyc.lifeplus.user.service.UserAccountingService;
 import com.hyc.lifeplus.user.service.UserBookService;
 import com.hyc.lifeplus.user.service.UserCarService;
 import com.hyc.lifeplus.user.service.UserService;
 import com.hyc.lifeplus.user.vo.UserBookVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,24 +46,27 @@ public class UserController {
     @Autowired
     BookService bookService;
 
+    @Autowired
+    UserAccountingService userAccountingService;
+
     @ApiOperation("获取用户信息")
     @GetMapping("/get")
-    public User getUser(@RequestParam Integer userId){
+    public User getUser(@ApiParam("用户id") @RequestParam Integer userId) {
         return userService.getById(userId);
     }
 
     @ApiOperation("获取用户车辆列表")
     @GetMapping("/myCars")
-    public List<UserCar> listUserCars(@RequestParam Integer userId){
+    public List<UserCar> listUserCars(@ApiParam("用户id") @RequestParam Integer userId) {
         return userCarService.listUserCars(userId);
     }
 
     @ApiOperation("获取用户图书列表")
     @GetMapping("/myBooks")
-    public List<UserBookVO> listUserBooks(@RequestParam Integer userId){
+    public List<UserBookVO> listUserBooks(@ApiParam("用户id") @RequestParam Integer userId) {
         List<UserBook> userBooks = userBookService.listUserBooks(userId);
 
-        return userBooks.stream().map(ub->{
+        return userBooks.stream().map(ub -> {
             UserBookVO vo = new UserBookVO();
             vo.setUserId(userId);
             vo.setBookId(ub.getBookId());
@@ -74,5 +81,12 @@ public class UserController {
 
             return vo;
         }).collect(Collectors.toList());
+    }
+
+    @ApiOperation("获取用户记账信息列表")
+    @GetMapping("/myAccounting")
+    public List<UserAccounting> listUserAccounting(@ApiParam("用户id") @RequestParam Integer userId,
+                                                   @ApiParam("账户类型") @RequestParam AccountingType type) {
+        return userAccountingService.listUserAccounting(userId, type);
     }
 }
