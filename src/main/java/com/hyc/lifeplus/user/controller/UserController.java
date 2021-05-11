@@ -1,6 +1,8 @@
 package com.hyc.lifeplus.user.controller;
 
 import com.hyc.lifeplus.account.enums.AccountingType;
+import com.hyc.lifeplus.core.web.Page;
+import com.hyc.lifeplus.core.web.PageInfo;
 import com.hyc.lifeplus.object.entity.Book;
 import com.hyc.lifeplus.object.service.BookService;
 import com.hyc.lifeplus.user.entity.User;
@@ -83,10 +85,11 @@ public class UserController {
         }).collect(Collectors.toList());
     }
 
+    @Page
     @ApiOperation("获取用户记账信息列表")
     @GetMapping("/myAccounting")
     public List<UserAccounting> listUserAccounting(@ApiParam("用户id") @RequestParam Integer userId,
                                                    @ApiParam("账户类型") @RequestParam AccountingType type) {
-        return userAccountingService.listUserAccounting(userId, type);
+        return userAccountingService.pageUserAccounting(userId, type, PageInfo.get());
     }
 }

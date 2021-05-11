@@ -1,5 +1,6 @@
 package com.hyc.lifeplus.user.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.hyc.lifeplus.account.enums.AccountingType;
 import com.hyc.lifeplus.user.entity.UserAccounting;
@@ -19,5 +20,5 @@ public interface UserAccountingService extends IService<UserAccounting> {
      * @param type
      * @return
      */
-    List<UserAccounting> listUserAccounting(Integer userId, AccountingType type);
+    List<UserAccounting> pageUserAccounting(Integer userId, AccountingType type, IPage iPage);
 }
