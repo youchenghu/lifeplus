@@ -9,6 +9,8 @@ import com.hyc.lifeplus.user.service.UserBookService;
 import com.hyc.lifeplus.user.service.UserCarService;
 import com.hyc.lifeplus.user.service.UserService;
 import com.hyc.lifeplus.user.vo.UserBookVO;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +25,7 @@ import java.util.stream.Collectors;
  * @date ：2021/5/5 11:18 下午
  * @description：
  */
+@Api(tags = "用户")
 @RequestMapping("/user")
 @RestController
 public class UserController {
@@ -39,16 +42,19 @@ public class UserController {
     @Autowired
     BookService bookService;
 
+    @ApiOperation("获取用户信息")
     @GetMapping("/get")
     public User getUser(@RequestParam Integer userId){
         return userService.getById(userId);
     }
 
+    @ApiOperation("获取用户车辆列表")
     @GetMapping("/myCars")
     public List<UserCar> listUserCars(@RequestParam Integer userId){
         return userCarService.listUserCars(userId);
     }
 
+    @ApiOperation("获取用户图书列表")
     @GetMapping("/myBooks")
     public List<UserBookVO> listUserBooks(@RequestParam Integer userId){
         List<UserBook> userBooks = userBookService.listUserBooks(userId);
