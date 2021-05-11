@@ -7,9 +7,9 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
- * @Author ：胡友成
- * @Date ：2021/5/5 11:28 下午
- * @Description：
+ * @author ：胡友成
+ * @date ：2021/5/5 11:28 下午
+ * @description：
  */
 @Data
 @TableName("user")
@@ -20,5 +20,8 @@ public class User {
 
     @TableField("nickname")
     private String nickname;
+
+    @TableField("phone")
+    private String phone;
 
 }

@@ -5,9 +5,9 @@ import lombok.Data;
 import java.time.LocalDate;
 
 /**
- * @Author ：胡友成
- * @Date ：2021/5/10 10:10 下午
- * @Description：
+ * @author ：胡友成
+ * @date ：2021/5/10 10:10 下午
+ * @description：
  */
 @Data
 public class UserBookVO {

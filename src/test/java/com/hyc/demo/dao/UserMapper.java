@@ -1,13 +1,13 @@
-package com.hyc.lifeplus.user.dao;
+package com.hyc.demo.dao;
 
+import com.hyc.demo.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.hyc.lifeplus.user.entity.User;
 import org.springframework.stereotype.Repository;
 
 /**
- * @author ：胡友成
- * @date ：2021/5/5 11:24 下午
- * @description：
+ * @author 胡友成
+ * @date 2021-05-11 16:01
+ * @description
  */
 @Repository
 public interface UserMapper extends BaseMapper<User> {

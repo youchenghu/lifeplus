@@ -7,9 +7,9 @@ import com.hyc.lifeplus.object.service.BookService;
 import org.springframework.stereotype.Service;
 
 /**
- * @Author ：胡友成
- * @Date ：2021/5/10 9:24 下午
- * @Description：
+ * @author ：胡友成
+ * @date ：2021/5/10 9:24 下午
+ * @description：
  */
 @Service
 public class BookServiceImpl extends ServiceImpl<BookMapper, Book> implements BookService {

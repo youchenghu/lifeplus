@@ -5,9 +5,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * @Author ：胡友成
- * @Date ：2021/5/5
- * @Description：
+ * @author ：胡友成
+ * @date ：2021/5/5
+ * @description：
  */
 @MapperScan("com.hyc.lifeplus.**.dao")
 @SpringBootApplication

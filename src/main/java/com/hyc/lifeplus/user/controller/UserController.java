@@ -19,9 +19,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @Author ：胡友成
- * @Date ：2021/5/5 11:18 下午
- * @Description：
+ * @author ：胡友成
+ * @date ：2021/5/5 11:18 下午
+ * @description：
  */
 @RequestMapping("/user")
 @RestController

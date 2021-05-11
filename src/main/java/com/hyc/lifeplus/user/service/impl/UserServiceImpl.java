@@ -7,9 +7,9 @@ import com.hyc.lifeplus.user.service.UserService;
 import org.springframework.stereotype.Service;
 
 /**
- * @Author ：胡友成
- * @Date ：2021/5/7 12:10 上午
- * @Description：
+ * @author ：胡友成
+ * @date ：2021/5/7 12:10 上午
+ * @description：
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {

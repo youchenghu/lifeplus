@@ -6,9 +6,9 @@ import com.hyc.lifeplus.user.entity.UserBook;
 import java.util.List;
 
 /**
- * @Author ：胡友成
- * @Date ：2021/5/10
- * @Description：
+ * @author ：胡友成
+ * @date ：2021/5/10
+ * @description：
  */
 public interface UserBookService extends IService<UserBook> {
 

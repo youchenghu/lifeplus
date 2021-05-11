@@ -5,9 +5,9 @@ import com.hyc.lifeplus.user.entity.UserCar;
 import org.springframework.stereotype.Repository;
 
 /**
- * @Author ：胡友成
- * @Date ：2021/5/10
- * @Description：
+ * @author ：胡友成
+ * @date ：2021/5/10
+ * @description：
  */
 @Repository
 public interface UserCarMapper extends BaseMapper<UserCar> {
