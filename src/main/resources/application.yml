@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/lifeway?characterEncoding=UTF8
+    username: root
+    password: youki360
+
+mybatis-plus:
+  type-aliases-package: com.hyc.**.entity
+  mapper-locations: classpath*:com/hyc/**/dao/mapper/*.xml
