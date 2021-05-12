@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
+import java.net.URI;
+
 /**
  * @author ：胡友成
  * @date ：2021/5/11
@@ -23,12 +25,21 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 public class GlobalResponseHandler implements ResponseBodyAdvice<Object> {
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
-        return true;
+
+        // swagger的相关请求不拦截
+        Class<?> containingClass = returnType.getContainingClass();
+        return !containingClass.getName().contains("swagger");
     }
 
     @SuppressWarnings("rawtypes")
     @Override
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
+
+        // swagger的api-docs不进行拦截
+        URI uri = request.getURI();
+        if (uri.getPath() != null && uri.getPath().contains("api-docs")) {
+            return body;
+        }
 
         final String returnTypeName = returnType.getParameterType().getName();
         if ("void".equals(returnTypeName)) {

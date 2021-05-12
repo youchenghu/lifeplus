@@ -7,10 +7,11 @@
 + 使用swagger搭建接口文档【ok】
 + 模块化
 + maven依赖优化
-+ 出参统一包装code、msg、data
-+ 分页统一处理
++ 出参统一包装code、msg、data【ok】
++ 分页统一处理【ok】
 + 枚举值显示在swagger
 + 支持jwt用户身份校验
++ 使用ELK记录日志
 
 ###实验室
 - 电梯调度
