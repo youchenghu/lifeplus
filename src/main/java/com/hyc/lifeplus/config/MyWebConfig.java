@@ -25,11 +25,7 @@ public class MyWebConfig implements WebMvcConfigurer {
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 
         // 由于Jackson消息处理器默认存在，它也可以处理json，要先删除，不然会优先用Jackson
-        for (int i = converters.size() - 1; i >= 0; i--) {
-            if (converters.get(i) instanceof MappingJackson2HttpMessageConverter) {
-                converters.remove(i);
-            }
-        }
+        converters.removeIf(converter -> converter instanceof MappingJackson2HttpMessageConverter);
 
         // 使用FastJson工具来转换出入参
         FastJsonHttpMessageConverter fastJsonHttpMessageConverter = new FastJsonHttpMessageConverter();
