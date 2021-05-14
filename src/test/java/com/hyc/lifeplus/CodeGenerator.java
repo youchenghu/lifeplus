@@ -14,7 +14,7 @@ public class CodeGenerator {
     public void testBuild(){
         new HappyCodeFactory()
                 .setAuthor("胡友成")
-                .setPackageName("com.hyc.demo")
+                .setPackageName("com.hyc.lifeplus.demo")
                 .setOutputDir(System.getProperty("user.dir") + "/src/test/java")
                 .setDataSource(
                         "jdbc:mysql://127.0.0.1:3306/lifeway?characterEncoding=UTF8",
@@ -22,7 +22,7 @@ public class CodeGenerator {
                         "root",
                         "youki360"
                 )
-                .setTableName("user")
+                .setTableName("common_sense")
                 .setTablePrefix("")
                 .build();
     }
