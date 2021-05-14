@@ -5,6 +5,7 @@ import com.hyc.lifeplus.core.web.Page;
 import com.hyc.lifeplus.core.web.PageInfo;
 import com.hyc.lifeplus.object.entity.Book;
 import com.hyc.lifeplus.object.service.BookService;
+import com.hyc.lifeplus.user.dto.AddUserAccountingDTO;
 import com.hyc.lifeplus.user.entity.User;
 import com.hyc.lifeplus.user.entity.UserAccounting;
 import com.hyc.lifeplus.user.entity.UserBook;
@@ -18,10 +19,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -91,5 +89,11 @@ public class UserController {
     public List<UserAccounting> listUserAccounting(@ApiParam("用户id") @RequestParam Integer userId,
                                                    @ApiParam("账户类型") @RequestParam AccountingType type) {
         return userAccountingService.pageUserAccounting(userId, type, PageInfo.get());
+    }
+
+    @ApiOperation("新增记账记录")
+    @PostMapping("/addAccounting")
+    public void addAccounting(@ApiParam("记账信息") @RequestBody AddUserAccountingDTO dto) {
+        userAccountingService.addUserAccounting(dto);
     }
 }
